@@ -1,0 +1,520 @@
+/* Smooth Scrolling & Universal Configuration */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 70px;
+    /* To adjust navbar height during smooth scroll */
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #333;
+    overflow-x: hidden;
+    background-color: #fafafa;
+    position: relative;
+}
+
+/* Floating WhatsApp Button Styling */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background-color: #25d366;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 30px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    color: #fff;
+    background-color: #128c7e;
+}
+
+/* Scroll Top Button Styling */
+#scrollTopBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none;
+    z-index: 1000;
+    background-color: #25d366;
+    color: white;
+    border: none;
+    outline: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 20px;
+    box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+#scrollTopBtn:hover {
+    background-color: #1e3d59;
+    transform: translateY(-5px);
+}
+
+/* Sticky Custom Navigation Bar */
+.custom-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    transition: all 0.4s ease-in-out;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    padding: 18px 0;
+}
+
+/* 100px স্ক্রল ডাউনের পর এড হবে */
+.custom-navbar.navbar-scrolled {
+    background: #1e3d59 !important;
+    padding: 12px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #ffffff !important;
+}
+
+.nav-link {
+    color: #f8f9fa !important;
+    font-weight: 400;
+    margin: 0 5px;
+    padding: 6px 12px !important;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+
+.nav-link:hover,
+.nav-link.active {
+    color: #fff !important;
+    background-color: #ff6e40;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+/* Fullscreen Background Hero Section with Animation */
+
+
+/* .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    z-index: 1;
+} */
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Keyframe Animations */
+.animate-fade-in-down {
+    animation: fadeInDown 1.2s ease-out forwards;
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 1.2s ease-out forwards;
+}
+
+.animate-fade-in-up-delayed {
+    opacity: 0;
+    animation: fadeInUp 1.2s ease-out 0.5s forwards;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* SEO Section Layout Optimization */
+.section-title {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1e3d59;
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.section-title::after {
+    content: '';
+    width: 70px;
+    height: 4px;
+    background: #16a34a;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* Custom Gallery Zoom Hover Effect */
+.gallery-box {
+    cursor: pointer;
+}
+
+.gallery-box img {
+    transition: transform 0.5s ease;
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.gallery-box:hover img {
+    transform: scale(1.1);
+}
+
+/* Form Controls Optimization */
+.form-control:focus,
+.form-select:focus {
+    border-color: #ff6e40;
+    box-shadow: 0 0 0 0.25rem rgba(255, 110, 64, 0.25);
+}
+
+.card-hover-effect {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover-effect:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Responsive adjustment */
+@media (max-width: 991.98px) {
+    .custom-navbar {
+        background: #1e3d59 !important;
+        padding: 12px 0;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5rem;
+    }
+}
+
+.gallery-item {
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.gallery-item img {
+    transition: transform 0.4s ease;
+}
+
+/* মাউস নিলে ছবিটা হালকা একটু বড় হবে */
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+ /* Footer */
+    footer {
+        background: #111827;
+        color: #d1d5db;
+        padding: 4rem 1rem 2rem;
+    }
+    
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        margin-bottom: 3rem;
+    }
+    
+    @media (min-width: 768px) {
+        .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    
+    @media (min-width: 1024px) {
+        .footer-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+    
+    .footer-links {
+        list-style: none;
+    }
+    
+    .footer-links li {
+        margin-bottom: 0.75rem;
+    }
+    
+    .footer-links a {
+        color: #d1d5db;
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+        color: #16a34a;
+    }
+    
+    .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .social-links a {
+        background: #1f2937;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s;
+    }
+    
+    .social-links a:hover {
+        background: #16a34a;
+        transform: translateY(-2px);
+    }
+
+    /* টাইপিং কার্সার ব্লিংকিং ইফেক্ট */
+.typed-cursor {
+    font-size: inherit;
+    color: #ff6e40; /* আপনার থিম কালার অনুযায়ী পরিবর্তন করতে পারেন */
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* ==========================================
+   Hero Carousel Section Styling
+============================================= */
+#heroCarousel {
+    width: 100%;
+    height: 90vh; /* স্ক্রিনের ৯০% উচ্চতা জুড়ে স্লাইডার থাকবে */
+    background-color: #000;
+}
+
+.carousel-inner, .carousel-item {
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+/* স্লাইড পরিবর্তনের সময় যেন স্মুথ ফেড (Fade) ইফেক্ট হয় */
+.carousel-fade .carousel-item {
+    opacity: 0;
+    transition-duration: 0.8s;
+    transition-property: opacity;
+}
+
+.carousel-fade .carousel-item.active {
+    opacity: 1;
+}
+
+/* টেক্সট বক্স কন্টেইনার */
+.carousel-caption-custom {
+    max-width: 800px;
+    padding: 20px;
+    z-index: 10;
+}
+
+.carousel-caption-custom h1 {
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.carousel-caption-custom p {
+    font-size: 1.25rem;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+/* ডানে-বামে যাওয়ার অ্যারো বাটন সুন্দর করা */
+.carousel-control-prev, .carousel-control-next {
+    width: 5%;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+    opacity: 0.9;
+}
+
+/* মোবাইল স্ক্রিনের জন্য অ্যাডজাস্টমেন্ট */
+@media (max-width: 768px) {
+    #heroCarousel {
+        height: 70vh; /* মোবাইলে উচ্চতা একটু কমে যাবে */
+    }
+    .carousel-caption-custom h1 {
+        font-size: 2rem !important;
+    }
+    .carousel-caption-custom p {
+        font-size: 1rem !important;
+    }
+}
+
+/* ==========================================
+   Payment Section Custom Styling
+============================================= */
+.copy-number-box {
+    transition: all 0.2s ease;
+}
+.copy-number-box:hover {
+    border-color: #198754 !important;
+    background-color: #f8f9fa !important;
+}
+.copy-number-box:active {
+    transform: scale(0.98);
+}
+#payment .shadow-sm {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+#payment .shadow-sm:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+
+/* নোটিফিকেশন পপ-আপ স্টাইল */
+.booking-notification {
+    position: fixed;
+    bottom: 90px; /* হোয়াটসঅ্যাপ বাটনের একটু ওপরে থাকবে */
+    left: 25px;
+    background: #ffffff;
+    border-left: 5px solid #198754;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+    z-index: 9999;
+    display: none;
+    animation: fadeInUp 0.5s ease, fadeOutDown 0.5s ease 4.5s; /* ৫ সেকেন্ড পর একা একাই চলে যাবে */
+}
+
+
+/* ==========================================
+   প্রি-লোডার, ব্যাক-টু-টপ এবং রিভিউ স্টাইল
+============================================= */
+
+/* ১. প্রি-লোডার ডিজাইন */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #111827; /* ডার্ক ব্যাকগ্রাউন্ড */
+    z-index: 99999; /* যেন সবার ওপরে থাকে */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* ২. ব্যাক-টু-টপ ফ্লোটিং বাটন */
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    z-index: 99;
+    display: none; /* শুরুতে লুকানো থাকবে */
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+}
+#backToTop:hover {
+    transform: translateY(-5px);
+}
+
+/* ৩. রিভিউ সেকশন কাস্টমাইজেশন */
+#reviews {
+    overflow: hidden;
+}
+.italic {
+    font-style: italic;
+}
+
+
+/* ==========================================
+   Dark Mode Custom Adjustments
+============================================= */
+
+/* যখন ডার্ক মোড অ্যাক্টিভেট থাকবে */
+[data-bs-theme="dark"] {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* ডার্ক মোডে সাদা ব্যাকগ্রাউন্ডের সেকশনগুলোকে ডার্ক গ্রে করা */
+[data-bs-theme="dark"] .bg-white,
+[data-bs-theme="dark"] section.bg-white,
+[data-bs-theme="dark"] .bg-light {
+    background-color: #1e1e1e !important;
+    color: #e0e0e0 !important;
+}
+
+/* ডার্ক মোডেカード এবং ফর্মের ব্যাকগ্রাউন্ড অ্যাডজাস্টমেন্ট */
+[data-bs-theme="dark"] .flip-card-front,
+[data-bs-theme="dark"] .glass-form-card,
+[data-bs-theme="dark"] .copy-number-box {
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
+    border-color: #444444 !important;
+}
+
+[data-bs-theme="dark"] .text-dark {
+    color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .text-secondary,
+[data-bs-theme="dark"] .text-muted {
+    color: #b0b0b0 !important;
+}
+
+/* টগল বাটনের হোভার অ্যানিমেশন */
+#darkModeToggle {
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+#darkModeToggle:hover {
+    transform: rotate(30deg);
+}
