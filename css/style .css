@@ -518,3 +518,56 @@ body {
 #darkModeToggle:hover {
     transform: rotate(30deg);
 }
+
+
+/* মোবাইল স্ক্রিনের জন্য বিশেষ অপ্টিমাইজেশন */
+@media (max-width: 767.98px) {
+    
+    /* ১. বুকিং ফর্ম কমপ্যাক্ট ও বেটার স্পেসিং */
+    #bookingForm .row {
+        --bs-gutter-y: 0.8rem; /* ইনপুট লাইনের ভেতরের গ্যাপ কমানো */
+    }
+    
+    #bookingForm label {
+        font-size: 0.85rem; /* লেবেলের ফন্ট সাইজ কিছুটা ছোট করা */
+        margin-bottom: 3px;
+    }
+
+    /* ২. ইনপুট ফিল্ডের প্যাডিং বৃদ্ধি (ক্লিক বা টাইপ করা সহজ করার জন্য) */
+    #bookingForm .form-control, 
+    #bookingForm .form-select {
+        padding: 10px 14px; /* আঙ্গুল দিয়ে সহজে সিলেক্ট করার জন্য পারফেক্ট */
+        font-size: 0.95rem;
+        border-radius: 8px;
+    }
+
+    /* ৩. কার্ড বা ফর্ম কন্টেইনারের মার্জিন-প্যাডিং অপ্টিমাইজেশন */
+    .booking-card-container {
+        padding: 15px !important; /* অতিরিক্ত খালি জায়গা কমিয়ে আনা */
+        margin-bottom: 70px !important; /* স্টিকি বাটনের জন্য নিচে জায়গা রাখা */
+    }
+    
+    /* ৪. স্টিকি "Book Now" বাটন (Sticky Bottom Button) */
+    .mobile-sticky-btn-wrapper {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    background: rgba(255, 255, 255, 0.1); /*হালকা ট্রান্সপারেন্ট ব্যাকগ্রাউন্ড */
+        backdrop-filter: blur(8px); /* ব্যাকড্রপ ব্লার ইফেক্ট */
+        padding: 12px 20px;
+        box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08);
+        z-index: 1030; /* যেন সব সেকশনের ওপরে থাকে */
+        display: block !important;
+    }
+}
+
+/* ডার্ক মোডে স্টিকি বাটনের ব্যাকগ্রাউন্ড এডজাস্টমেন্ট */
+[data-bs-theme="dark"] .mobile-sticky-btn-wrapper {
+    background: rgba(33, 37, 41, 0.9);
+}
+
+/* ডেস্কটপ বা বড় স্ক্রিনে স্টিকি বাটনটি হাইড বা অদৃশ্য থাকবে */
+.mobile-sticky-btn-wrapper {
+    display: none;
+}

@@ -319,12 +319,13 @@
 
 
   <section id="booking" class="py-5 bg-light">
-    <div class="container py-4">
+    <div class="container py-4 ">
       <h2 class="section-title text-center">Booking System</h2>
       <div class="row justify-content-center mt-4">
         <div class="col-md-8">
           <div class="card border-0 shadow rounded-4 overflow-hidden">
-            <div class="card-body p-4 p-md-5 bg-white">
+    
+            <div class="card-body p-4 p-md-5 bg-white booking-card-container ">
               <div id="bookingAlert"></div>
               <form id="interactiveBookingForm">
                 <input type="hidden" name="form_type" value="bookings">
@@ -376,7 +377,7 @@
                       <input type="date" id="bookingDate" name="date" class="form-control" required>
                     </div>
                   </div>
-                  <div class="col-6">
+                  <div class="col-md-6">
                     <label class="form-label fw-bold">মেম্বার সংখ্যা (কমপক্ষে ৫ জন)</label>
                     <div class="input-group">
                       <span class="input-group-text bg-light"><i class="fas fa-users text-muted"></i></span>
@@ -785,6 +786,16 @@
       </div>
     </div>
   </footer>
+
+
+
+  <!-- মোবাইলের জন্য ফিক্সড স্টিকি বাটন -->
+<div class="mobile-sticky-btn-wrapper text-align: center; d-lg-none">
+  <a href="#booking" class="btn btn-success w-10 py-2 fw-bold rounded-pill shadow-sm">
+    <i class="bi bi-calendar-check me-2"></i> এখনই বুকিং করুন
+  </a>
+</div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <!-- GLightbox JS -->
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
