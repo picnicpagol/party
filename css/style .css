@@ -40,6 +40,12 @@ body {
     background-color: #128c7e;
 }
 
+
+@media (max-width: 768px) {
+        .whatsapp-float {
+bottom: 30px;
+}
+    }
 /* Scroll Top Button Styling */
 #scrollTopBtn {
     position: fixed;
@@ -64,6 +70,12 @@ body {
     background-color: #1e3d59;
     transform: translateY(-5px);
 }
+
+@media (max-width: 768px) {
+        #scrollTopBtn {
+bottom: 30px;
+}
+    }
 
 /* Sticky Custom Navigation Bar */
 .custom-navbar {
@@ -559,6 +571,13 @@ body {
         box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.08);
         z-index: 1030; /* যেন সব সেকশনের ওপরে থাকে */
         display: block !important;
+    }
+
+        .btn-center {
+       position: fixed;
+        left: 150px;
+             bottom: 10px;
+
     }
 }
 
