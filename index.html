@@ -414,6 +414,28 @@
     </div>
   </section>
 
+  <div class="modal fade" id="bookingSuccessModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4 border-0 shadow">
+      <div class="modal-body">
+        <div class="text-success mb-3" style="font-size: 55px;">
+          <i class="bi bi-check-circle-fill"></i> 🎉
+        </div>
+        <h3 class="modal-title fw-bold mb-2 text-success" id="successModalLabel">বুকিং সফল হয়েছে!</h3>
+        <p class="text-muted">পিকনিক পাগল পার্টি-তে আপনার রিকোয়েস্টটি আমরা পেয়েছি।</p>
+        
+        <div class="bg-light p-3 rounded my-3 border">
+          <span class="text-secondary d-block small mb-1">আপনার অফিশিয়াল বুকিং ID:</span>
+          <strong id="displayBookingID" class="text-primary fs-4">PP-2026-XXXX</strong>
+        </div>
+        
+        <p class="small text-danger mb-3">অনুগ্রহ করে আইডিটি সংরক্ষণ করুন। আপনার ইমেইল চেক করুন এবং আমাদের প্রতিনিধি শীঘ্রই যোগাযোগ করবেন।</p>
+        <button type="button" class="btn btn-success w-100 py-2 fw-bold rounded-3" data-bs-dismiss="modal">ধন্যবাদ</button>
+      </div>
+    </div>
+  </div>
+</div>
+
   <section id="blog" class="py-5">
     <div class="container py-4 text-center">
       <h2 class="section-title">Latest Blog</h2>
@@ -796,7 +818,7 @@
   </a>
 </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- GLightbox JS -->
   <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   <!-- Typed.js CDN -->
@@ -809,6 +831,61 @@
       duration: 1000, // অ্যানিমেশন ১ সেকেন্ড ধরে স্মুথলি হবে
       once: true      // স্ক্রোল করার সময় অ্যানিমেশন শুধু একবারই হবে
     });
+
+
+ // ধরে নিচ্ছি আপনার বুকিং ফর্মের HTML আইডি হলো 'bookingForm'
+document.getElementById('bookingForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // ফর্ম সাবমিট হলে পেজ রিলোড হওয়া বন্ধ করবে
+    
+    // সাবমিট বাটনটি সাময়িকভাবে ডিজেবল করুন যেন ইউজার বারবার ক্লিক না করতে পারে
+    const submitBtn = this.querySelector('button[type="submit"]');
+    if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> প্রসেসিং হচ্ছে...';
+    }
+
+    // ফর্মে থাকা সব ডেটা (Name, Email, Package ইত্যাদি) সংগ্রহ করুন
+    const formData = new FormData(this);
+
+    // 🚀 আপনার গুগল অ্যাপস স্ক্রিপ্টের আসল নিউ ডেপ্লয়মেন্ট ইউআরএল (Web App URL) এখানে বসাবেন
+    const scriptURL = 'YOUR_NEW_GOOGLE_APPS_SCRIPT_URL_HERE'; 
+
+    // ব্যাকএন্ডে (গুগল শিটে) ডেটা পাঠানো শুরু
+    fetch(scriptURL, { 
+        method: 'POST', 
+        body: formData 
+    })
+    .then(response => response.json()) // গুগলের পাঠানো রেসপন্সটিকে JSON-এ কনভার্ট করা
+    .then(data => {
+        // যদি ব্যাকএন্ড সফলভাবে ডাটা সেভ করে 'success' রিটার্ন করে
+        if (data.result === 'success') {
+            
+            // 💥 গুগল স্ক্রিপ্ট যে আইডি জেনারেট করেছে (data.booking_id) তা পপ-আপ মোডালে বসিয়ে দেওয়া
+            document.getElementById('displayBookingID').innerText = data.booking_id;
+            
+            // বুটস্ট্র্যাপ মোডাল পপ-আপটি স্ক্রিনে ওপেন বা শো করুন
+            var myModal = new bootstrap.Modal(document.getElementById('bookingSuccessModal'));
+            myModal.show();
+            
+            // ফর্মটি পুরোপুরি খালি (Reset) করে দিন
+            this.reset();
+        } else {
+            alert('দুঃখিত! ডাটা সেভ করতে সমস্যা হয়েছে। আবার চেষ্টা করুন।');
+        }
+    })
+    .catch(error => {
+        console.error('Error!', error.message);
+        alert('নেটওয়ার্ক সমস্যার কারণে বুকিং করা সম্ভব হয়নি। দয়া করে আবার চেষ্টা করুন।');
+    })
+    .finally(() => {
+        // বাটনটিকে আবার আগের মতো সচল করে দেওয়া
+        if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = 'বুকিং কনফর্ম করুন';
+        }
+    });
+});
+
   </script>
 
 </body>
