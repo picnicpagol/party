@@ -9,4 +9,4 @@ Disallow: /js/
 Disallow: /css/
 
 # আপনার ওয়েবসাইটের আসল সাইটম্যাপ (Sitemap) লিংকটি এখানে দিন
-Sitemap: https://yourwebsite.com/sitemap.xml
+Sitemap: https://picnicpagol.github.io/party/sitemap.xml
